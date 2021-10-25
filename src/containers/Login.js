@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Redirect,Link } from "react-router-dom";
+import {Redirect } from "react-router-dom";
 import { authLogin } from "../store/actions/auth";
-import { Form, Input, Button } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 function LoginForm (props) {
   const { token} = props;
   const onFinish = (values) => {
@@ -15,50 +13,20 @@ function LoginForm (props) {
     return <Redirect to="/" />;
   }
   return (
-    <div id="login_form_div">
-      <Form
-      name="normal_login"      
-      className="login-form"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-    >
-      <Form.Item
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Username!',
-          },
-        ]}
-      >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Password!',
-          },
-        ]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          登录
-        </Button>
-        还没有账户？ <Link to="/signup">注册</Link>
-      </Form.Item>
+    <Form>
+      <Form.Field>
+        <label>First Name</label>
+        <input placeholder='First Name' />
+      </Form.Field>
+      <Form.Field>
+        <label>Last Name</label>
+        <input placeholder='Last Name' />
+      </Form.Field>
+      <Form.Field>
+        <Checkbox label='I agree to the Terms and Conditions' />
+      </Form.Field>
+      <Button type='submit'>Submit</Button>
     </Form>
-    </div>
   );
 }
 

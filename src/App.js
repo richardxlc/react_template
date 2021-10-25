@@ -3,24 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import BaseRouter from "./routes";
 import * as actions from "./store/actions/auth";
-//import "semantic-ui-css/semantic.min.css";
 import CustomLayout from "./containers/Layout";
+import 'semantic-ui-css/semantic.min.css'
 
-// class App extends Component {
-//   componentDidMount() {
-//     this.props.onTryAutoSignup();
-//   }
-
-//   render() {
-//     return (
-//       <Router>
-//         <CustomLayout {...this.props}>
-//           <BaseRouter />
-//         </CustomLayout>
-//       </Router>
-//     );
-//   }
-// }
 
 function App(props){
   useEffect (()=>{

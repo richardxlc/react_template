@@ -2,8 +2,6 @@ import React from "react";
 import {
     Container,
     Divider,
-    Grid,
-    Header,
     Image,
     List,
     Segment,
@@ -11,7 +9,7 @@ import {
 
 const CustomFooter = () =>{
     return (
-        <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+        <Segment inverted vertical style={{ margin: '1em 0em 0em', padding: '5em 0em' }}>
             <Container textAlign='center'>               
                 <Divider inverted section />
                 <Image centered size='mini' src='/images/logo.png' />

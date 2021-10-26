@@ -38,12 +38,11 @@ class RegistrationForm extends React.Component {
     return (
       <Grid
         textAlign="center"
-        style={{ height: "100vh" }}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            Signup to your account
+            注册
           </Header>
           {error && <p>{this.props.error.message}</p>}
 
@@ -57,7 +56,7 @@ class RegistrationForm extends React.Component {
                   fluid
                   icon="user"
                   iconPosition="left"
-                  placeholder="Username"
+                  placeholder="用户名"
                 />
                 <Form.Input
                   onChange={this.handleChange}
@@ -66,7 +65,7 @@ class RegistrationForm extends React.Component {
                   fluid
                   icon="mail"
                   iconPosition="left"
-                  placeholder="E-mail address"
+                  placeholder="email"
                 />
                 <Form.Input
                   onChange={this.handleChange}
@@ -75,7 +74,7 @@ class RegistrationForm extends React.Component {
                   name="password1"
                   icon="lock"
                   iconPosition="left"
-                  placeholder="Password"
+                  placeholder="输入密码"
                   type="password"
                 />
                 <Form.Input
@@ -85,7 +84,7 @@ class RegistrationForm extends React.Component {
                   name="password2"
                   icon="lock"
                   iconPosition="left"
-                  placeholder="Confirm password"
+                  placeholder="再次输入密码"
                   type="password"
                 />
 
@@ -96,12 +95,12 @@ class RegistrationForm extends React.Component {
                   loading={loading}
                   disabled={loading}
                 >
-                  Signup
+                  注册
                 </Button>
               </Segment>
             </Form>
             <Message>
-              Already have an account? <NavLink to="/login">Login</NavLink>
+              已经有账户了? <NavLink to="/login">登录</NavLink>
             </Message>
           </React.Fragment>
         </Grid.Column>

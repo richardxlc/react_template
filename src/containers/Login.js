@@ -1,32 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {Redirect } from "react-router-dom";
 import { authLogin } from "../store/actions/auth";
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button,  Form, Header, } from 'semantic-ui-react'
+
+
 function LoginForm (props) {
-  const { token} = props;
-  const onFinish = (values) => {
-    //console.log('Received values of form: ', values);
-    props.login(values.username,values.password)
+  const { token,loading} = props;
+  const [username,setUsername]=useState("")
+  const [password,setPassword]=useState("")
+  function onUsernameChange(e){
+    setUsername(e.target.value)
+  }
+  function onPasswordChange(e){
+    setPassword(e.target.value)
+  }
+  function handleSubmit (e){
+    if(username!=="" && password!==""){
+      props.login(username,password)
+    }
   };
   if (token) {
     return <Redirect to="/" />;
   }
   return (
-    <Form>
+    <div style={{marginTop:'11em',marginBottom:'11em'}}>
+      <Header>登录</Header>
+      <hr/>
+      {loading && 
+        <div class="ui active centered inline loader"></div>
+    }
+    <Form onSubmit={handleSubmit} >
+
       <Form.Field>
-        <label>First Name</label>
-        <input placeholder='First Name' />
+        <label>用户名</label>
+        <input placeholder='用户名' type="text" value={username} name="username" onChange={onUsernameChange}/>
       </Form.Field>
       <Form.Field>
-        <label>Last Name</label>
-        <input placeholder='Last Name' />
+        <label>密码</label>
+        <input placeholder='密码' type="password" value={password} name="password" onChange={onPasswordChange}/>
       </Form.Field>
-      <Form.Field>
-        <Checkbox label='I agree to the Terms and Conditions' />
-      </Form.Field>
-      <Button type='submit'>Submit</Button>
+      
+      <Button type='submit' disabled={loading} loading={loading}>登录</Button>
     </Form>
+    </div>
   );
 }
 

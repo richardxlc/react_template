@@ -5,7 +5,6 @@ import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../store/actions/auth";
 import {
   Container,
-  Dropdown,
   Image,
   Menu,
 } from 'semantic-ui-react'
@@ -19,13 +18,18 @@ const CustomMenu = (props) =>{
             <Image size='mini' src='/images/logo.png' style={{ marginRight: '1.5em' }} />
                 React模版
             </Menu.Item>
-            <Menu.Item as='a'><NavLink to="/">首页</NavLink></Menu.Item>
+            <Menu.Item><NavLink to="/">首页</NavLink></Menu.Item>
             {authenticated ?
                 <Menu.Item as='a' onClick={()=>props.logout()}>注销</Menu.Item>
                 :
+                <>
                     <Menu.Item >
                         <NavLink to="/login">登录</NavLink>
                     </Menu.Item>
+                    <Menu.Item >
+                        <NavLink to="/signup">注册</NavLink>
+                    </Menu.Item>
+                </>
             }
             
         </Container>
